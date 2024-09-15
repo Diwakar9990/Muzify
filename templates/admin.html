@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Muzify
+{% endblock %}
+
+{% block content %}
+<h1>Admin Page</h1>
+
+<div class="card-row">
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h3 class="card-title">Users</h3>
+      <h6 class="card-subtitle mb-2 text-body-secondary">No of Users : {{ user_count }}</h6>
+      <p class="card-text">
+      </p>
+    </div>
+  </div>
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h3 class="card-title">Creator</h3>
+      <h6 class="card-subtitle mb-2 text-body-secondary">No of Creator : {{ creator_count }}</h6>
+      <p class="card-text">
+      </p>
+    </div>
+  </div>
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h3 class="card-title">Songs Uploaded</h3>
+        <h6 class="card-subtitle mb-2 text-body-secondary">No of Songs : {{ song_count }}</h6>
+        <p class="card-text">
+        </p>
+      </div>
+    </div>
+  </div>
+  <div style="margin: 5%;">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Song id</th>
+        <th scope="col">Song Name</th>
+        <th scope="col">Uploaded by</th>
+        <th scope="col">Delete Song</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for song in song %}
+   
+      <tr>
+        <th scope="row">{{ song.id }}</th>
+        <td>{{ song.name }}</td>
+        {% for user in user %}
+        {% if user.id == song.user_id %}
+        <td>{{ user.username }}</td>
+        {% endif %}
+        {% endfor %}
+        <td><a href="{{ url_for('delete', id=song.id) }}" class="delete"><button class="btn btn-danger">delete</button></a></td>
+      </tr>
+  
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
+
+{% block style %}
+<style>
+    .card-row {
+      padding: auto;
+      display: inline-block;
+    }
+    .card{
+        padding: auto;
+        margin-left: 50px;
+        margin-top: 30px;
+        display: inline-block;
+    }
+    h1 {
+        margin-top: 40px;
+        text-align: center;
+    }
+</style>
+{% endblock %}

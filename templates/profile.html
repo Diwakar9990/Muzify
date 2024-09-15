@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+    <div align="center" style="margin-top: 8%;">
+        <h1>Profile</h1>
+        {% if user.is_creator==false %}
+        <h2 class="text-muted">{{ user.username }} not a creator</h2>
+        <br>
+        <div  class="col">
+            <a class="btn btn-primary" href="{{ url_for('creator')}}" role="button">+ Register as Creator</a>
+        </div>
+        {% endif %}
+        {% if user.is_creator==true %}
+        <h2 class="text-muted">You are a creator</h2>
+        {% endif %}
+    </div>
+
+{% endblock %}

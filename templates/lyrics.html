@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class = lyrics>
+ 
+<h1 style="margin:0cm;"> {{ song.name }} </h1>
+<h2></h2>
+</div>
+<div class = lyrics
+    <p>{{ song.lyrics }}</p>
+
+</div>
+{% endblock %}
+
+{% block style %}
+<style>
+    .lyrics{
+        padding: auto;
+        margin-top: 20px;
+        margin-left: 50px;
+        margin-right: 50px;
+        display: inline-block;
+    }
+</style>
+{% endblock %}

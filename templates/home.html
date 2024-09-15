@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Muzify
+{% endblock %}
+
+{% block content %}
+<div>
+{% for song in song %}
+<div class="card-row">
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">Track - {{ song.name }}</h5>
+      <h6 class="card-subtitle mb-2 text-body-secondary">Album {{ song.album }}</h6>
+      <p class="card-text">
+        <audio controls style="width: 100%;">
+          <source src="{{ song.file }}" type="audio/mp3">
+        </audio>
+      </p>
+      <div class="d-grid gap-2 mx-auto">
+      <a href="{{ url_for('showlyrics', id=song.id) }}" class="lyrics mx-auto"><button class="btn btn-outline-dark">lyrics</button></a>
+    </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+</div>
+{% endblock %}
+
+{% block style %}
+<style>
+  
+    .card-row {
+      padding: auto;
+      display: inline-block;
+    }
+    .card{
+        padding: auto;
+        margin-left: 50px;
+        margin-top: 30px;
+        display: inline-block;
+    }
+    h1 {
+        margin-left: 42px;
+        margin-top: 30px;
+        text-align: left;
+    }
+   
+</style>
+{% endblock %}

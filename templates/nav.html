@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{{url_for('home')}}">MUZIFY</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+          {% if user %}
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="text" id="query" name="query" placeholder="Search"  >
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+          {% if user.is_creator %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('upload') }}">Uplaod Music</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('dashboard') }}">Dashboard</a>
+          </li>
+          </li>
+            {% if user.is_admin %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('admin') }}"> Admin Dashboard</a>
+            </li>
+            {% endif %}
+          {% endif %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('profile') }}">{{user.username}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('logout') }}">logout</a>
+          </li>
+          
+
+          {% endif %}
+          {% if not user %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('register') }}">Register</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>

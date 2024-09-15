@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1>Fill Song Details</h1>
+<br>
+<form class="first" method="post">
+    <label for="name">Song Name</label>
+        <input type="text" id="name" name="name" size="20" class="form-control-sm">
+    </label>
+    <br>
+    <label for="album">Album</label>
+        <input type="text" id="Album" name="Album" size="20" class="form-control-sm">
+    </label>
+    <br>
+    <label for="lyrics">lyrics</label>
+        <input type="text" id="lyrics" name="lyrics" size="20" class="form-control-sm" ><br>
+    </label>
+   
+    <!-- <label for="user_id">Creator</label>
+    <input type="text" id="user" name="user" class="form-control-sm" value="{{ user.name }}"><br>
+</label> -->
+    <label for="file">File Path</label>
+        <input type="text" id="file" name="file" size="20" class="form-control-sm" ><br>
+    </label>
+    <label for="artist">artist</label>
+        <input type="text" id="artist" name="artist" size="20" class="form-control-sm" ><br>
+    </label>
+    <label for="genre">genre</label>
+        <input type="text" id="genre" name="genre" size="20" class="form-control-sm" ><br>
+    </label>
+
+    <input type="submit" value="upload" class="btn btn-success">
+  </form>
+{% endblock %}
+{% block style %}
+<style>
+    .first{
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        size: 10px;
+    }
+    h1 {
+        margin-top: 40px;
+        text-align: center;
+    }
+
+</style>
+{% endblock %}

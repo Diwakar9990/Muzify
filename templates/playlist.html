@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div style="margin: 5%;">
+<form class="first" method="post">
+    <label for="name">Playlist Name</label>
+        <input type="text" id="name" name="name" size="20" class="form-control-sm">
+</label>
+</div>
+
+<div style="margin: 5%;">
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Song ID</th>
+        <th scope="col">Song Name</th>
+        <th scope="col">Add Songs</th>
+        
+      </tr>
+    </thead>
+    <tbody> 
+    {% for song in song %}
+      <tr>
+        <th scope="row">{{ song.id }}</th>
+        <td>{{ song.name }}</td>
+        <td><div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" name="exampleCheck1" value="{{ song.id }}" checked>
+            <label class="form-check-label" for="exampleCheck1"> Add to playlist</label>
+          </div></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+<div class="d-grid gap-2 col-2 mx-auto"><input style="align-items: center;" type="submit" value="Create Playlist" class="btn btn-success"></div>
+</form>
+  {% endblock %}

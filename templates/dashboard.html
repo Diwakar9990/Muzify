@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Muzify
+{% endblock %}
+
+{% block content %}
+{% set count = namespace(value=0) %}
+{% set count2 = namespace(value=0) %}
+{% for song in song %}
+{% if song.user_id == user.id %}
+  {% set count.value = count.value + 1 %}
+{% endif %}
+{% endfor %}
+<div class="card-row">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Songs Uploaded</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary">No of Songs : {{ count.value }}</h6>
+        <p class="card-text">
+        </p>
+      </div>
+    </div>
+  </div>
+  <div style="margin: 5%;">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Song id</th>
+        <th scope="col">Song Name</th>
+        <th scope="col">Update Song</th>
+        <th scope="col">Delete Song</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for song in song %}
+    {% if song.user_id == user.id %}
+      <tr>
+        <th scope="row">{{ song.id }}</th>
+        <td>{{ song.name }}</td>
+        <td><a href="{{ url_for('update', id=song.id) }}" class="update"><button class="btn btn-primary">update</button></a></td>
+        <td><a href="{{ url_for('delete', id=song.id) }}" class="delete"><button class="btn btn-danger">delete</button></a></td>
+      </tr>
+    {% endif %}
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
+
+{% block style %}
+<style>
+    .card-row {
+      padding: auto;
+      display: inline-block;
+    }
+    .card{
+        padding: auto;
+        margin-left: 50px;
+        margin-top: 30px;
+        display: inline-block;
+    }
+    h1 {
+        margin-top: 40px;
+        text-align: center;
+    }
+</style>
+{% endblock %}
