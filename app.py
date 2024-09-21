@@ -9,4 +9,4 @@ import models as models
 import routes as routes
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
